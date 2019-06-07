@@ -5,6 +5,7 @@
 </nav>
 
 <form action="{% url 'count' %}" method="POST">
+  {% csrf_token %}
   <textarea name="fulltext" id="fulltext" cols="30" rows="10"></textarea>
   <button type="submit">세어라</button>
 </form>
