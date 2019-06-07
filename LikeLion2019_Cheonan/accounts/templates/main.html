@@ -1,0 +1,92 @@
+<!-- {% load static %} -->
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link href="https://fonts.googleapis.com/css?family=Do+Hyeon&amp;subset=korean" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    <title>OOTD</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="header">
+            <div class="header__wrap">
+                <div class="logo__wrap"> <i class="fas fa-tshirt" id="logo"></i>OOTD</div>
+                <div class="btn__wrap">
+                    {% if user.is_authenticated %}
+                        <a href="{%url 'mypage'%}"><button>{{user.username}}님</button></a>
+                        <a href="{%url 'logout'%}"><button>Logout</button></a>
+                    {% else %}
+                        <a href="{%url 'login'%}"><button>Login</button></a>
+                        <a href="{%url 'signup'%}"><button>Join</button></a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+            <div class="body__wrap">
+                <div class="bar__wrap">
+                    <div class="info__wrap">
+                        Now's temp is <span class="js-weather"></span>
+                        <span class="js-location"></span>
+                    </div>
+                        {% if user.is_authenticated %}
+                        <a href="{%url 'upload'%}"><button class="ootd__btn">What Is Your OOTD?</button></a>
+                        {% else %}
+                        <a href="{%url 'login'%}"><button class="ootd__btn">What Is Your OOTD?</button></a>
+                        {% endif %}
+                    
+                    <div class="filter__wrap">
+                        <form class="filter" onchange="this.submit()">
+                            <select name="weather">
+                                <option value>날씨 선택</option>
+                                <option value="맑음" {%ifequal weather '맑음' %}selected{%endifequal%}>맑음</option>
+                                <option value="흐림" {%ifequal weather '흐림' %}selected{%endifequal%}>흐림</option>
+                                <option value="비" {%ifequal weather '비' %}selected{%endifequal%}>비</option>
+                                <option value="눈" {%ifequal weather '눈' %}selected{%endifequal%}>눈</option>
+                            </select>
+                        </form>    
+                    </div>
+                </div>
+                <div class="card__wrap">
+
+                    {%for ootd in ootds.all%}
+                        <div class="card">
+                                <img src="{{ootd.photo.url }}" style="width:220px;height:340px;">
+                           <div class="upper">
+                            {%ifequal ootd.weather '맑음'%}
+                                <i class="fas fa-sun"></i>
+                            {%endifequal%}
+                            {%ifequal ootd.weather '흐림'%}
+                                <i class="fas fa-cloud"></i>
+                            {%endifequal%}
+                            {%ifequal ootd.weather '비'%}
+                                <i class="fas fa-cloud-rain"></i>
+                            {%endifequal%}
+                            {%ifequal ootd.weather '눈'%}
+                                <i class="fas fa-snowflake"></i>
+                            {%endifequal%}
+                                <div class="temperature">{{ootd.temperature}}°C</div>
+                        </div>
+                            <div class="status"><div class="location">{{ootd.regionShort}}</div><div class="date">{{ootd.date}}</div></div>
+                            <div class="reaction"><i class="fas fa-heart">
+                                {% if user.is_authenticated %}
+                                <a href="{%url 'like' ootd.id %}">좋아요</a></i> {{ootd.likes.count}}개</div>
+                                {% else %}
+                                <a href="{%url 'login'%}">좋아요</a></i> {{ootd.likes.count}}개</div>
+                                {% endif %}
+                        </div>
+                    {%endfor%}
+                </div>
+            </div>
+            <div class="footer__wrap">
+                <div class="text__wrap">
+                    <div class="team"> <span>Team : 오늘 뭐 입조?</span></div>
+                    <div class="member"><span>Member : 박지원 방성환 손유태 장서원</span></div>
+                </div>
+                <img src="https://likelion.net/assets/home/slide/02-slogan-f77dde1a45e987c0c1c2603a1dfcddbde2a7a1d5750e1ee7ff115e415a56b0db.png"/>
+            </div>
+    </div>
+    <script src="{% static 'js/weather.js'%}"></script>
+</body>
+</html>

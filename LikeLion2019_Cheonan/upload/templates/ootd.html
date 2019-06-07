@@ -1,0 +1,44 @@
+{% load static %}
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8"> 
+    <title>uploading</title>
+    <link href="https://fonts.googleapis.com/css?family=Do+Hyeon&amp;subset=korean" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'ootd_style.css' %}">
+
+
+
+    <style>
+        label {display:block;}
+    </style>
+</head>
+<body>
+    <p>
+        나의 현재 위치: <span id="position">확인 중...</span>
+    </p>
+    
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label>사진: <input type="file" name="photo"></label>
+        <label>지역: <input type="text" name="region"></label>
+        <label>날씨: <select name="weather">
+            <option value="맑음">맑음</option>
+            <option value="흐림">흐림</option>
+            <option value="비">비</option>
+            <option value="눈">눈</option>
+        </select></label>
+        <label>온도: <input type="number" name="temperature"></label>
+        <label>내용: <textarea name="body" class="noresize"></textarea></label>
+        <div class="clearfix">
+            <button type="button" onclick="location='{%url 'main'%}'" class="cancelbtn">Cancle</button>
+            <button type="submit" class="uploadbtn">Upload</button>
+        </div>
+    </form>
+
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=07ab50cbd97bfa056cdde1b6837dc5c9&libraries=services"></script>
+    <script src="{% static 'js/ootd.js' %}"></script>
+</body>
+</html>
+

@@ -1,0 +1,233 @@
+/* init setting */
+html, body{
+    margin:0;
+    min-height: 100vh;
+    font-family: 'Do Hyeon', sans-serif;
+}
+
+/* header */
+
+.header{
+    font-family: 'Do Hyeon', sans-serif;
+    height: 80px;
+    width: 100%;
+    background-color: #ffffff;
+    border-bottom: 1px solid rgb(229, 229, 229);
+    position: relative;
+}
+.header__wrap{
+    width: 100%;
+    position: absolute;
+}
+
+
+.logo__wrap{
+    top: 12px;
+    display: inline-block;
+    margin-left: 20px;
+    font-size: 30px;
+    position: absolute;
+}
+
+#logo{
+    background-color: #1DA0DA;
+    color:#ffffff;
+    font-size: 30px;
+    margin-right: 15px;
+    padding: 15px 13px;
+    border-radius: 30px;
+}
+
+.btn__wrap{
+    margin-top: 25px;
+    display: inline-block;
+    float: right;
+    margin-right: 30px;
+}
+
+button{
+    font-family: 'Do Hyeon', sans-serif;
+    font-size: 25px;
+    border: none;
+    background: none;
+}
+
+button:focus{
+    outline: 0;
+}
+
+.btn__wrap button:hover{
+    font-family: 'Do Hyeon', sans-serif;
+    background-color:#1DA0DA;
+    border-radius: 5px;
+    transition: 0.5s;
+    color: #ffffff;
+    border-right: 1px solid rgb(229, 229, 229) ease-in-out;
+    border-bottom: 1px solid rgb(229, 229, 229) ease-in-out;
+}
+
+
+/* body */
+
+
+.body__wrap{
+    /* height: 100vh; */
+    width: 100%;
+    background-color: #ffffff;
+    position: relative;
+    /* display: flex; */
+    justify-content: center;
+}
+
+.bar__wrap{
+    width: 80%;
+    height: 80px;
+    /* position: absolute; */
+    border-bottom: 1px solid rgb(229, 229, 229);
+    border-right: 1px solid rgb(229, 229, 229);
+    /* top: 80px; */
+    position:relative;
+    margin: 80px auto 0 auto;
+}
+
+.filter__wrap {
+    position: absolute;
+    bottom: 0;
+    transform: translateY(100%);
+    width: 100%;
+    text-align:right;
+    padding-top:10px;
+}
+.filter {
+    border:none;
+    margin: 0;
+}
+
+.info__wrap{
+    display: inline-block;
+    position: absolute;
+    left: 50;
+    top: 23;
+}
+
+.js-weather{
+    font-size: 30px;
+}
+
+.js-weather i {
+    margin-left: 30px;
+}
+
+.js-location{
+    margin-left: 30px;
+}
+
+
+
+.ootd__btn{
+    font-family: 'Do Hyeon', sans-serif;
+    position: absolute;
+    right: 50;
+    top: 10;
+    border: 1px solid rgb(229, 229, 229);
+    padding: 10px 20px;
+    border-radius: 30px;
+    color: #ffffff;
+    background-color: #1DA0DA;
+}
+
+.card__wrap{
+    /* position: absolute; */
+    width: 100%;
+    /* height: 70%; */
+    /* bottom:12%; */
+    overflow: auto;
+  white-space: nowrap;
+    margin-bottom: 100px;
+    
+}
+
+.card{
+    display: inline-block;
+    margin-top: 10%;
+    width: 220px;
+    height: 340px;
+    margin-left: 10%;
+    position: relative;
+    margin-bottom:50px;
+}
+
+.upper {
+    position: absolute;
+    width: 100%;
+    top:10;
+    left:10;
+    font-size: 20px;
+    color:#ffffff;
+}
+
+.upper i{
+    font-size: 30px;
+}
+
+.upper div{
+    float:right;
+    margin-right: 25px;
+}
+
+.status{
+    position: absolute;
+    bottom:0;
+    left:10;
+    color:#ffffff;
+}
+
+.reaction{
+    margin: 10px;
+    color: red;
+}
+
+.reaction i a{
+    font-family: 'Do Hyeon', sans-serif;
+    margin-left:7px;
+    margin-right:3px;
+    text-decoration:none;
+    color: black;
+}
+/* footer */
+
+
+.footer__wrap{
+    height: 200px;
+    background-color:#2f3640;
+    color: #ffffff;
+    position: relative;
+}
+
+.text__wrap {
+    position: absolute;
+    left: 80;
+    top: 60;
+    font-family: 'Do Hyeon', sans-serif;
+ }
+
+.text__wrap::before{
+    font-family: 'Do Hyeon', sans-serif;
+    margin-bottom: 30px;
+    content: "";
+    display: block;
+    height: 2px;
+    width: 100%;
+    background-color: #ffffff;
+}
+
+.team{
+    margin-bottom: 20;
+}
+.footer__wrap img{
+    position: absolute;
+    top: 25;
+    right:30;
+    height:160px;
+    width:160px;
+}
